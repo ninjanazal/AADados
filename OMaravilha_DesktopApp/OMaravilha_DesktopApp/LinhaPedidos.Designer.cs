@@ -128,6 +128,8 @@
             // 
             // vistaPedidos
             // 
+            this.vistaPedidos.AllowUserToAddRows = false;
+            this.vistaPedidos.AllowUserToDeleteRows = false;
             this.vistaPedidos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.vistaPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.vistaPedidos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -135,6 +137,7 @@
             this.colunaQuantidade});
             this.vistaPedidos.Location = new System.Drawing.Point(12, 9);
             this.vistaPedidos.Name = "vistaPedidos";
+            this.vistaPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.vistaPedidos.Size = new System.Drawing.Size(345, 287);
             this.vistaPedidos.TabIndex = 9;
             this.vistaPedidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.vistaPedidos_CellContentClick);

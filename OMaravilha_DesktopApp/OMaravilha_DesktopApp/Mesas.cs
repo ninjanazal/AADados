@@ -19,7 +19,7 @@ namespace OMaravilha_DesktopApp
         }
 
 
-
+        //botoes de mesa
         private void mesa1_Click(object sender, EventArgs e)
         {
             //Criar a nova janela

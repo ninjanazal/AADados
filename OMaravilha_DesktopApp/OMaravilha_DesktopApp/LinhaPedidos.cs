@@ -40,7 +40,7 @@ namespace OMaravilha_DesktopApp
 
             //enquanto tem linhas para ler adiciona na tabela
             while (reader.Read())
-                vistaPedidos.Rows.Add(reader[0].ToString(), reader[1]);
+                vistaPedidos.Rows.Add(reader[0].ToString().Trim(), reader[1]);
             //fecha connecçao
             connection.Close();
         }
