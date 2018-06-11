@@ -1,0 +1,11 @@
+D:\Documentos\Google Drive\BaseDados\OMaravilha_DesktopApp\OMaravilha_DesktopApp\bin\Debug\OMaravilha_DesktopApp.exe.config
+D:\Documentos\Google Drive\BaseDados\OMaravilha_DesktopApp\OMaravilha_DesktopApp\bin\Debug\OMaravilha_DesktopApp.exe
+D:\Documentos\Google Drive\BaseDados\OMaravilha_DesktopApp\OMaravilha_DesktopApp\bin\Debug\OMaravilha_DesktopApp.pdb
+D:\Documentos\Google Drive\BaseDados\OMaravilha_DesktopApp\OMaravilha_DesktopApp\obj\Debug\OMaravilha_DesktopApp.csprojResolveAssemblyReference.cache
+D:\Documentos\Google Drive\BaseDados\OMaravilha_DesktopApp\OMaravilha_DesktopApp\obj\Debug\OMaravilha_DesktopApp.Mesas.resources
+D:\Documentos\Google Drive\BaseDados\OMaravilha_DesktopApp\OMaravilha_DesktopApp\obj\Debug\OMaravilha_DesktopApp.Properties.Resources.resources
+D:\Documentos\Google Drive\BaseDados\OMaravilha_DesktopApp\OMaravilha_DesktopApp\obj\Debug\OMaravilha_DesktopApp.csproj.GenerateResource.Cache
+D:\Documentos\Google Drive\BaseDados\OMaravilha_DesktopApp\OMaravilha_DesktopApp\obj\Debug\OMaravilha_DesktopApp.exe
+D:\Documentos\Google Drive\BaseDados\OMaravilha_DesktopApp\OMaravilha_DesktopApp\obj\Debug\OMaravilha_DesktopApp.pdb
+D:\Documentos\Google Drive\BaseDados\OMaravilha_DesktopApp\OMaravilha_DesktopApp\obj\Debug\OMaravilha_DesktopApp.LinhaPedidos.resources
+D:\Documentos\Google Drive\BaseDados\OMaravilha_DesktopApp\OMaravilha_DesktopApp\obj\Debug\OMaravilha_DesktopApp.AdicionarPedidos.resources

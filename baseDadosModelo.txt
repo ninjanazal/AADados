@@ -1,0 +1,25 @@
+Restaurante A
+	um restaurante
+	Fornecedores
+		Produtos
+	Empregados
+		Nome
+		Horario
+
+------- Descriçao do modelo de negocio
+O restaurante A
+
+No Restaurante A diariamente é recebido certas encomendas feitas aos fornecedores,
+em que cada uma delas é guardada o fornecedor proveniente, o que fora recebido, quantidade
+e o preço, onde posteriormente é verificada a integridade e quantidades dos mesmo.
+
+O gerente juntamente com o chefe definem os pratos do dia (que suplementam a carta do 
+restaurante). Existe 3 pratos por dia, um de peixe, carne e vegetariano.
+Em função dos pratos determinados é selecionados os produtos a serem utilizados no dia.
+
+A partir das 10h o chefe atribui funcões á equipa. Feito isto, os empregados sao distribuidos
+pela cozinha e a sala, e é inicado a confeçao das refeições.
+
+
+ 
+
