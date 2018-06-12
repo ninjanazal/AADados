@@ -118,7 +118,7 @@ namespace OMaravilha_DesktopApp
                 SqlCommand command = new SqlCommand("dbo.removePedidoArtigo", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@Pedido", row.Cells[0].Value);
+                command.Parameters.AddWithValue("@Pedido", numPedido);
                 command.Parameters.AddWithValue("@Artigo", row.Cells[1].Value.ToString());
 
                 ////cria comando para a base de dados, update da tabela
@@ -144,6 +144,52 @@ namespace OMaravilha_DesktopApp
                 connection.Close();
 
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //dados da linha selecionada
+            DataGridViewRow row = vistaPedidos.SelectedRows[0];
+
+            //iniciar connecçao
+            String connectKey = "Data Source=DESKTOP-2V1JTH4;Initial Catalog=RestauranteMaravilha;Integrated Security=True";
+            SqlConnection connection = new SqlConnection(connectKey);
+
+            //cria comando para a base de dados
+            SqlCommand command = new SqlCommand("dbo.updatePedido", connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            //parametros
+            command.Parameters.AddWithValue("@ArtigoId", row.Cells[1].Value.ToString());
+            command.Parameters.AddWithValue("@PedidoId", numPedido);
+            command.Parameters.AddWithValue("@Quantidade", Convert.ToInt32(row.Cells[2].Value));
+
+            ////cria comando para a base de dados, update da tabela
+            SqlCommand commandUpdate = new SqlCommand("dbo.getPedido", connection);
+            commandUpdate.CommandType = CommandType.StoredProcedure;
+            commandUpdate.Parameters.AddWithValue("@MID", mesaNum);
+
+            //abrir connecçao
+            connection.Open();
+
+            //executa remoçao 
+            command.ExecuteNonQuery();
+
+            vistaPedidos.Rows.Clear();
+            ////criar leitor
+            SqlDataReader reader = commandUpdate.ExecuteReader();
+
+            ////enquanto tem linhas para ler adiciona na tabela
+            while (reader.Read())
+                vistaPedidos.Rows.Add(reader[0], reader[1].ToString().Trim(), reader[2]);
+
+            //fecha connecçao
+            connection.Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

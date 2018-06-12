@@ -81,6 +81,7 @@ namespace OMaravilha_DesktopApp
                 SqlCommand command = new SqlCommand("dbo.addpedido", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
+                //define parametros
                 command.Parameters.AddWithValue("@ArtigoId", row.Cells[0].Value);
                 command.Parameters.AddWithValue("@PedidoId", numPedido);
                 command.Parameters.AddWithValue("@Quantidade", Convert.ToInt32(quantidadeText.Text));
@@ -88,15 +89,10 @@ namespace OMaravilha_DesktopApp
                 //abrir connecçao
                 connection.Open();
 
-                //executa remoçao 
-                try
-                {
-                    command.ExecuteNonQuery();
-                }
-                catch
-                {
-                    MessageBox.Show("Artigo existento no pedido!");
-                }
+                //executa comando
+                //tenta o procedure, caso ja exista o artigo é criado um aviso 
+                try { command.ExecuteNonQuery(); }
+                catch { MessageBox.Show("Artigo existente no pedido!"); }
                 //fecha connecçao
                 connection.Close();
 
@@ -104,12 +100,12 @@ namespace OMaravilha_DesktopApp
                 LinhaPedidos linhaPedido = new LinhaPedidos(mesa);
                 linhaPedido.Show();
                 this.Close();
-                }
+            }
             else
             {
-                    MessageBox.Show("Insira apenas valores!");
-                    quantidadeText.Text = null;
-                }
+                MessageBox.Show("Insira apenas valores!");
+                quantidadeText.Text = null;
             }
         }
     }
+}
