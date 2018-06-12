@@ -30,9 +30,12 @@
         {
             this.inserirTipo = new System.Windows.Forms.Label();
             this.segundaVista = new System.Windows.Forms.DataGridView();
+            this.ColumnIDArtigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNomeArtigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adicionarArtigo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.quantidadeText = new System.Windows.Forms.TextBox();
+            this.cancelarButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.segundaVista)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,12 +52,35 @@
             // 
             // segundaVista
             // 
+            this.segundaVista.AllowUserToAddRows = false;
+            this.segundaVista.AllowUserToDeleteRows = false;
             this.segundaVista.BackgroundColor = System.Drawing.SystemColors.Control;
             this.segundaVista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.segundaVista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnIDArtigo,
+            this.ColumnNomeArtigo});
             this.segundaVista.Location = new System.Drawing.Point(12, 39);
             this.segundaVista.Name = "segundaVista";
+            this.segundaVista.ReadOnly = true;
+            this.segundaVista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.segundaVista.Size = new System.Drawing.Size(260, 187);
-            this.segundaVista.TabIndex = 1;
+            this.segundaVista.TabIndex = 10;
+            // 
+            // ColumnIDArtigo
+            // 
+            this.ColumnIDArtigo.FillWeight = 50F;
+            this.ColumnIDArtigo.HeaderText = "IDArtigo";
+            this.ColumnIDArtigo.Name = "ColumnIDArtigo";
+            this.ColumnIDArtigo.ReadOnly = true;
+            this.ColumnIDArtigo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ColumnIDArtigo.Width = 60;
+            // 
+            // ColumnNomeArtigo
+            // 
+            this.ColumnNomeArtigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnNomeArtigo.HeaderText = "Nome";
+            this.ColumnNomeArtigo.Name = "ColumnNomeArtigo";
+            this.ColumnNomeArtigo.ReadOnly = true;
             // 
             // adicionarArtigo
             // 
@@ -65,6 +91,7 @@
             this.adicionarArtigo.TabIndex = 2;
             this.adicionarArtigo.Text = "Adicionar";
             this.adicionarArtigo.UseVisualStyleBackColor = false;
+            this.adicionarArtigo.Click += new System.EventHandler(this.adicionarArtigo_Click);
             // 
             // label1
             // 
@@ -75,19 +102,31 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Quantidade:";
             // 
-            // textBox1
+            // quantidadeText
             // 
-            this.textBox1.Location = new System.Drawing.Point(129, 233);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.quantidadeText.Location = new System.Drawing.Point(129, 233);
+            this.quantidadeText.Name = "quantidadeText";
+            this.quantidadeText.Size = new System.Drawing.Size(100, 20);
+            this.quantidadeText.TabIndex = 4;
+            // 
+            // cancelarButton
+            // 
+            this.cancelarButton.BackColor = System.Drawing.Color.Transparent;
+            this.cancelarButton.Location = new System.Drawing.Point(12, 283);
+            this.cancelarButton.Name = "cancelarButton";
+            this.cancelarButton.Size = new System.Drawing.Size(260, 23);
+            this.cancelarButton.TabIndex = 5;
+            this.cancelarButton.Text = "Cancelar";
+            this.cancelarButton.UseVisualStyleBackColor = false;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
             // AdicionarPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 292);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(284, 318);
+            this.Controls.Add(this.cancelarButton);
+            this.Controls.Add(this.quantidadeText);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.adicionarArtigo);
             this.Controls.Add(this.segundaVista);
@@ -108,6 +147,9 @@
         private System.Windows.Forms.DataGridView segundaVista;
         private System.Windows.Forms.Button adicionarArtigo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox quantidadeText;
+        private System.Windows.Forms.Button cancelarButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIDArtigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNomeArtigo;
     }
 }

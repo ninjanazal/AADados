@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace OMaravilha_DesktopApp
 {
     public partial class Mesas : Form
     {
+        Thread th;
+
 
         public Mesas()
         {
@@ -25,10 +28,12 @@ namespace OMaravilha_DesktopApp
             //Criar a nova janela
             LinhaPedidos linhaPedidos = new LinhaPedidos(1);
             linhaPedidos.Visible = true;
-            
+
             //fecha janela de selecçao de mesas
             this.Visible = false;
         }
+
+     
 
         private void mesa2_Click(object sender, EventArgs e)
         {
@@ -118,6 +123,11 @@ namespace OMaravilha_DesktopApp
 
             //fecha janela de selecçao de mesas
             this.Visible = false;
+        }
+
+        private void Mesas_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -56,11 +56,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(99, 9);
+            this.label1.Location = new System.Drawing.Point(63, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 20);
+            this.label1.Size = new System.Drawing.Size(142, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Mesas";
+            this.label1.Text = "Selecionar Mesa";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // mesa2
@@ -180,7 +180,8 @@
             this.Controls.Add(this.mesa1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Mesas";
-            this.Text = "Mesas";
+            this.Text = "Selecionar Mesa";
+            this.Load += new System.EventHandler(this.Mesas_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

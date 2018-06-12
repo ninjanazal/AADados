@@ -14,6 +14,7 @@ namespace OMaravilha_DesktopApp
     public partial class LinhaPedidos : Form
     {
         private int mesaNum;
+        private int numPedido;
 
         public LinhaPedidos(int numMesa)
         {
@@ -33,6 +34,11 @@ namespace OMaravilha_DesktopApp
             SqlCommand command = new SqlCommand("dbo.getPedido", connection);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@MID", mesaNum);
+
+            SqlCommand command2 = new SqlCommand("dbo.getNumPedido", connection);
+            command2.CommandType = CommandType.StoredProcedure;
+            command2.Parameters.AddWithValue("@Mesa", mesaNum);
+
             //abrir connecçao
             connection.Open();
             //criar leitor
@@ -40,7 +46,13 @@ namespace OMaravilha_DesktopApp
 
             //enquanto tem linhas para ler adiciona na tabela
             while (reader.Read())
-                vistaPedidos.Rows.Add(reader[0].ToString().Trim(), reader[1]);
+                vistaPedidos.Rows.Add(reader[0], reader[1].ToString().Trim(), reader[2]);
+            reader.Close();
+
+            SqlDataReader reader2 = command2.ExecuteReader();
+            while (reader2.Read())
+                numPedido = (int)reader2["PID"];
+
             //fecha connecçao
             connection.Close();
         }
@@ -49,8 +61,8 @@ namespace OMaravilha_DesktopApp
         {
             //fecha e janela e abre selecao de mesas
             Mesas mesa = new Mesas();
-            mesa.Visible = true;
-            this.Visible = false;
+            mesa.Show();
+            this.Close();
         }
 
         private void LinhaPedidos_Load(object sender, EventArgs e)
@@ -61,6 +73,77 @@ namespace OMaravilha_DesktopApp
         private void vistaPedidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void Pratos_Click(object sender, EventArgs e)
+        {
+            //criar janela passando o nome por parametro
+            AdicionarPedidos addPedido = new AdicionarPedidos("Pratos", mesaNum, numPedido);
+            addPedido.Show();
+            this.Hide();
+        }
+
+        private void Bebidas_Click(object sender, EventArgs e)
+        {
+            //criar janela passando o nome por parametro
+            AdicionarPedidos addPedido = new AdicionarPedidos("Bebidas", mesaNum, numPedido);
+            addPedido.Show();
+            this.Hide();
+        }
+
+        private void Sobremesas_Click(object sender, EventArgs e)
+        {
+            //criar janela passando o nome por parametro
+            AdicionarPedidos addPedido = new AdicionarPedidos("Sobremesas", mesaNum, numPedido);
+            addPedido.Show();
+            this.Hide();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //caso nao haja nenhuma selecçao ou tenha mais que um
+            if (vistaPedidos.SelectedRows.Count == 0 ||
+                vistaPedidos.SelectedRows.Count > 1)
+                MessageBox.Show("Nenhum pedido selecionado!");
+            else
+            {
+                //dados da linha selecionada
+                DataGridViewRow row = vistaPedidos.SelectedRows[0];
+
+                //iniciar connecçao
+                String connectKey = "Data Source=DESKTOP-2V1JTH4;Initial Catalog=RestauranteMaravilha;Integrated Security=True";
+                SqlConnection connection = new SqlConnection(connectKey);
+
+                //cria comando para a base de dados
+                SqlCommand command = new SqlCommand("dbo.removePedidoArtigo", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@Pedido", row.Cells[0].Value);
+                command.Parameters.AddWithValue("@Artigo", row.Cells[1].Value.ToString());
+
+                ////cria comando para a base de dados, update da tabela
+                SqlCommand commandUpdate = new SqlCommand("dbo.getPedido", connection);
+                commandUpdate.CommandType = CommandType.StoredProcedure;
+                commandUpdate.Parameters.AddWithValue("@MID", mesaNum);
+
+                //abrir connecçao
+                connection.Open();
+
+                //executa remoçao 
+                command.ExecuteNonQuery();
+
+                vistaPedidos.Rows.Clear();
+                ////criar leitor
+                SqlDataReader reader = commandUpdate.ExecuteReader();
+
+                ////enquanto tem linhas para ler adiciona na tabela
+                while (reader.Read())
+                    vistaPedidos.Rows.Add(reader[0], reader[1].ToString().Trim(), reader[2]);
+
+                //fecha connecçao
+                connection.Close();
+
+            }
         }
     }
 }

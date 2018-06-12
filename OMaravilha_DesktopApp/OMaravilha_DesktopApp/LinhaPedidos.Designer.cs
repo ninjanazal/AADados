@@ -37,6 +37,7 @@
             this.numeroMesa = new System.Windows.Forms.Label();
             this.cancelarPedido = new System.Windows.Forms.Button();
             this.vistaPedidos = new System.Windows.Forms.DataGridView();
+            this.ColumnNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colunaArtigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colunaQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.vistaPedidos)).BeginInit();
@@ -51,6 +52,7 @@
             this.Pratos.TabIndex = 1;
             this.Pratos.Text = "Pratos";
             this.Pratos.UseVisualStyleBackColor = false;
+            this.Pratos.Click += new System.EventHandler(this.Pratos_Click);
             // 
             // Bebidas
             // 
@@ -61,6 +63,7 @@
             this.Bebidas.TabIndex = 2;
             this.Bebidas.Text = "Bebidas";
             this.Bebidas.UseVisualStyleBackColor = false;
+            this.Bebidas.Click += new System.EventHandler(this.Bebidas_Click);
             // 
             // Sobremesas
             // 
@@ -71,6 +74,7 @@
             this.Sobremesas.TabIndex = 3;
             this.Sobremesas.Text = "Sobremesas";
             this.Sobremesas.UseVisualStyleBackColor = false;
+            this.Sobremesas.Click += new System.EventHandler(this.Sobremesas_Click);
             // 
             // button4
             // 
@@ -91,6 +95,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "Remover";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -131,22 +136,33 @@
             this.vistaPedidos.AllowUserToAddRows = false;
             this.vistaPedidos.AllowUserToDeleteRows = false;
             this.vistaPedidos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.vistaPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.vistaPedidos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.vistaPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.vistaPedidos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnNumero,
             this.colunaArtigo,
             this.colunaQuantidade});
-            this.vistaPedidos.Location = new System.Drawing.Point(12, 9);
+            this.vistaPedidos.Location = new System.Drawing.Point(13, 10);
+            this.vistaPedidos.MultiSelect = false;
             this.vistaPedidos.Name = "vistaPedidos";
             this.vistaPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.vistaPedidos.Size = new System.Drawing.Size(345, 287);
             this.vistaPedidos.TabIndex = 9;
             this.vistaPedidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.vistaPedidos_CellContentClick);
             // 
+            // ColumnNumero
+            // 
+            this.ColumnNumero.HeaderText = "NºPedido";
+            this.ColumnNumero.Name = "ColumnNumero";
+            this.ColumnNumero.ReadOnly = true;
+            this.ColumnNumero.Width = 80;
+            // 
             // colunaArtigo
             // 
             this.colunaArtigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colunaArtigo.HeaderText = "Artigo";
             this.colunaArtigo.Name = "colunaArtigo";
+            this.colunaArtigo.ReadOnly = true;
             this.colunaArtigo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colunaArtigo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
@@ -192,6 +208,7 @@
         private System.Windows.Forms.Label numeroMesa;
         private System.Windows.Forms.Button cancelarPedido;
         private System.Windows.Forms.DataGridView vistaPedidos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNumero;
         private System.Windows.Forms.DataGridViewTextBoxColumn colunaArtigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colunaQuantidade;
     }
