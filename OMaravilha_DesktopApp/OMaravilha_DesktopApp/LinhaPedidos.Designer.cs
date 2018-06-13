@@ -34,12 +34,13 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.numeroMesa = new System.Windows.Forms.Label();
+            this.nome = new System.Windows.Forms.Label();
             this.cancelarPedido = new System.Windows.Forms.Button();
             this.vistaPedidos = new System.Windows.Forms.DataGridView();
             this.ColumnNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colunaArtigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colunaQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeFunc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.vistaPedidos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,16 +110,16 @@
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // numeroMesa
+            // nome
             // 
-            this.numeroMesa.AutoSize = true;
-            this.numeroMesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroMesa.Location = new System.Drawing.Point(122, 9);
-            this.numeroMesa.Name = "numeroMesa";
-            this.numeroMesa.Size = new System.Drawing.Size(130, 17);
-            this.numeroMesa.TabIndex = 7;
-            this.numeroMesa.Text = "Numero da mesa";
-            this.numeroMesa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.nome.AutoSize = true;
+            this.nome.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nome.Location = new System.Drawing.Point(10, 9);
+            this.nome.Name = "nome";
+            this.nome.Size = new System.Drawing.Size(65, 13);
+            this.nome.TabIndex = 7;
+            this.nome.Text = "Funcionario:";
+            this.nome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cancelarPedido
             // 
@@ -144,11 +145,11 @@
             this.ColumnNumero,
             this.colunaArtigo,
             this.colunaQuantidade});
-            this.vistaPedidos.Location = new System.Drawing.Point(13, 10);
+            this.vistaPedidos.Location = new System.Drawing.Point(13, 29);
             this.vistaPedidos.MultiSelect = false;
             this.vistaPedidos.Name = "vistaPedidos";
             this.vistaPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.vistaPedidos.Size = new System.Drawing.Size(345, 287);
+            this.vistaPedidos.Size = new System.Drawing.Size(345, 268);
             this.vistaPedidos.TabIndex = 9;
             this.vistaPedidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.vistaPedidos_CellContentClick);
             // 
@@ -176,14 +177,26 @@
             this.colunaQuantidade.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colunaQuantidade.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // nomeFunc
+            // 
+            this.nomeFunc.AutoSize = true;
+            this.nomeFunc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nomeFunc.Location = new System.Drawing.Point(81, 9);
+            this.nomeFunc.Name = "nomeFunc";
+            this.nomeFunc.Size = new System.Drawing.Size(39, 13);
+            this.nomeFunc.TabIndex = 10;
+            this.nomeFunc.Text = "_nome";
+            this.nomeFunc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // LinhaPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 337);
+            this.Controls.Add(this.nomeFunc);
             this.Controls.Add(this.vistaPedidos);
             this.Controls.Add(this.cancelarPedido);
-            this.Controls.Add(this.numeroMesa);
+            this.Controls.Add(this.nome);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -207,11 +220,12 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label numeroMesa;
+        private System.Windows.Forms.Label nome;
         private System.Windows.Forms.Button cancelarPedido;
         private System.Windows.Forms.DataGridView vistaPedidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNumero;
         private System.Windows.Forms.DataGridViewTextBoxColumn colunaArtigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colunaQuantidade;
+        private System.Windows.Forms.Label nomeFunc;
     }
 }

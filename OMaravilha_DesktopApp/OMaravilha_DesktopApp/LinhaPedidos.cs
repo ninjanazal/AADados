@@ -21,8 +21,8 @@ namespace OMaravilha_DesktopApp
             InitializeComponent();
             //recebe o numero da mesa por parametro
             mesaNum = numMesa;
-            //altera a lable para o nome da janela para o numero da janela
-            numeroMesa.Text = "Mesa: " + mesaNum;
+            //altera a lable para o nome do funcionario
+
             //titulo da janela
             this.Text = "Mesa: " + mesaNum;
 
@@ -35,23 +35,37 @@ namespace OMaravilha_DesktopApp
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@MID", mesaNum);
 
+            //criar comando para pedir o numero do pedido
             SqlCommand command2 = new SqlCommand("dbo.getNumPedido", connection);
             command2.CommandType = CommandType.StoredProcedure;
-            command2.Parameters.AddWithValue("@Mesa", mesaNum);
+            command2.Parameters.AddWithValue("@Mesa", mesaNum);           
+
 
             //abrir connecçao
             connection.Open();
             //criar leitor
             SqlDataReader reader = command.ExecuteReader();
-
             //enquanto tem linhas para ler adiciona na tabela
             while (reader.Read())
                 vistaPedidos.Rows.Add(reader[0], reader[1].ToString().Trim(), reader[2]);
             reader.Close();
 
+            //le o numero do pedido
             SqlDataReader reader2 = command2.ExecuteReader();
             while (reader2.Read())
                 numPedido = (int)reader2["PID"];
+            reader2.Close();
+
+
+            //cria comando para pedir o nome do funcionario
+            SqlCommand command3 = new SqlCommand("dbo.getNomeFuncionario", connection);
+            command3.CommandType = CommandType.StoredProcedure;
+            command3.Parameters.AddWithValue("@pedidoId", numPedido);
+
+            //le o nome do funcionario
+            reader2 = command3.ExecuteReader();
+            while (reader2.Read())
+                nomeFunc.Text = reader2[0].ToString().Trim();
 
             //fecha connecçao
             connection.Close();
@@ -189,7 +203,28 @@ namespace OMaravilha_DesktopApp
 
         private void button6_Click(object sender, EventArgs e)
         {
+            //iniciar connecçao
+            String connectKey = "Data Source=DESKTOP-2V1JTH4;Initial Catalog=RestauranteMaravilha;Integrated Security=True";
+            SqlConnection connection = new SqlConnection(connectKey);
 
+
+            //cria comando para a base de dados
+            SqlCommand command = new SqlCommand("dbo.novoPedido", connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            //parametros
+            command.Parameters.AddWithValue("@MID", mesaNum);
+            command.Parameters.AddWithValue("@func", nomeFunc.Text);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+
+            connection.Close();
+
+            //fecha e janela e abre selecao de mesas
+            Mesas mesa = new Mesas();
+            mesa.Show();
+            this.Close();
         }
     }
 }
